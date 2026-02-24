@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Callibre AI — Logo Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #090909;
+  --white: #ffffff;
+  --green: #4ade80;
+  --g1: #888;
+  --g2: #444;
+  --border: rgba(255,255,255,0.08);
+  --font: 'DM Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font);
+  min-height: 100vh;
+  padding: 48px 32px;
+  -webkit-font-smoothing: antialiased;
+}
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--g1);
+  margin-bottom: 48px;
+}
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--g2);
+  font-family: 'Syne', sans-serif;
+  margin-bottom: 20px;
+  margin-top: 56px;
+}
+.section-label:first-of-type { margin-top: 0; }
+
+/* LOGO CARDS */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.logo-card {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 52px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s;
+  min-height: 220px;
+}
+.logo-card:hover { background: #161616; }
+.logo-card.dark-bg { background: #090909; }
+.logo-card.light-bg { background: #f4f4f0; }
+.logo-card.green-bg { background: #0d1f14; }
+.logo-card-label {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--g2);
+  font-family: 'Syne', sans-serif;
+}
+.light-bg .logo-card-label { color: #aaa; }
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 56px 0;
+}
+
+/* SIZE SHOWCASE */
+.sizes {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 40px;
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+/* CONSTRUCTION */
+.construction {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.construct-card {
+  background: #111;
+  border: 1px solid var(--border);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* COLOR SWATCHES */
+.swatches {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sw-color {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.sw-label {
+  font-size: 10px;
+  font-family: 'Syne', sans-serif;
+  letter-spacing: 0.08em;
+  color: var(--g1);
+}
+.sw-hex {
+  font-size: 11px;
+  font-family: monospace;
+  color: var(--g2);
+  margin-top: -4px;
+}
+</style>
+</head>
+<body>
+
+<h1>Callibre AI — Logo System</h1>
+
+<div class="section-label">Primary Logomark Variations</div>
+<div class="logo-grid">
+
+  <!-- V1: WAVEFORM C -->
+  <div class="logo-card dark-bg">
+    <svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Mark: C with calibration/signal lines -->
+      <g>
+        <!-- Outer arc of C -->
+        <path d="M30 8 C14 8 4 18 4 24 C4 30 14 40 30 40" stroke="#4ade80" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <!-- Inner signal lines (calibration bars inside the C opening) -->
+        <line x1="20" y1="18" x2="34" y2="18" stroke="#4ade80" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+        <line x1="16" y1="24" x2="34" y2="24" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="20" y1="30" x2="34" y2="30" stroke="#4ade80" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+        <!-- Dot at tip of C -->
+        <circle cx="30" cy="8" r="2.5" fill="#4ade80"/>
+        <circle cx="30" cy="40" r="2.5" fill="#4ade80"/>
+      </g>
+      <!-- Wordmark -->
+      <text x="50" y="31" font-family="Syne, sans-serif" font-weight="800" font-size="22" fill="white" letter-spacing="-0.5">callibre</text>
+      <text x="172" y="31" font-family="Syne, sans-serif" font-weight="700" font-size="10" fill="#4ade80" letter-spacing="1">.ai</text>
+    </svg>
+    <div class="logo-card-label">Primary — Dark</div>
+  </div>
+
+  <!-- V1 on light -->
+  <div class="logo-card light-bg">
+    <svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <path d="M30 8 C14 8 4 18 4 24 C4 30 14 40 30 40" stroke="#22c55e" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <line x1="20" y1="18" x2="34" y2="18" stroke="#22c55e" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+        <line x1="16" y1="24" x2="34" y2="24" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="20" y1="30" x2="34" y2="30" stroke="#22c55e" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+        <circle cx="30" cy="8" r="2.5" fill="#22c55e"/>
+        <circle cx="30" cy="40" r="2.5" fill="#22c55e"/>
+      </g>
+      <text x="50" y="31" font-family="Syne, sans-serif" font-weight="800" font-size="22" fill="#0a0a0a" letter-spacing="-0.5">callibre</text>
+      <text x="172" y="31" font-family="Syne, sans-serif" font-weight="700" font-size="10" fill="#22c55e" letter-spacing="1">.ai</text>
+    </svg>
+    <div class="logo-card-label" style="color:#999">Primary — Light</div>
+  </div>
+
+  <!-- V1 green bg -->
+  <div class="logo-card green-bg">
+    <svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <path d="M30 8 C14 8 4 18 4 24 C4 30 14 40 30 40" stroke="#4ade80" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <line x1="20" y1="18" x2="34" y2="18" stroke="#4ade80" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+        <line x1="16" y1="24" x2="34" y2="24" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="20" y1="30" x2="34" y2="30" stroke="#4ade80" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+        <circle cx="30" cy="8" r="2.5" fill="#4ade80"/>
+        <circle cx="30" cy="40" r="2.5" fill="#4ade80"/>
+      </g>
+      <text x="50" y="31" font-family="Syne, sans-serif" font-weight="800" font-size="22" fill="white" letter-spacing="-0.5">callibre</text>
+      <text x="172" y="31" font-family="Syne, sans-serif" font-weight="700" font-size="10" fill="#4ade80" letter-spacing="1">.ai</text>
+    </svg>
+    <div class="logo-card-label" style="color:#2d6b47">Dark green bg</div>
+  </div>
+
+</div>
+
+<div class="section-label" style="margin-top:40px">Icon-Only (Favicon / Avatar)</div>
+<div class="logo-grid" style="grid-template-columns: repeat(5,1fr)">
+
+  <!-- Icon 1: C with bars, on dark -->
+  <div class="logo-card dark-bg" style="padding:32px;min-height:140px">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+      <rect width="48" height="48" rx="11" fill="#111"/>
+      <path d="M30 10 C18 10 10 16 10 24 C10 32 18 38 30 38" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      <line x1="21" y1="18" x2="32" y2="18" stroke="#4ade80" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+      <line x1="18" y1="24" x2="32" y2="24" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="21" y1="30" x2="32" y2="30" stroke="#4ade80" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+    </svg>
+    <div class="logo-card-label">Icon dark</div>
+  </div>
+
+  <!-- Icon 2: Solid green bg -->
+  <div class="logo-card" style="background:#4ade80;padding:32px;min-height:140px">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+      <path d="M30 10 C18 10 10 16 10 24 C10 32 18 38 30 38" stroke="#000" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      <line x1="21" y1="18" x2="32" y2="18" stroke="#000" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+      <line x1="18" y1="24" x2="32" y2="24" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="21" y1="30" x2="32" y2="30" stroke="#000" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    </svg>
+    <div class="logo-card-label" style="color:#1a6b3a">Icon on green</div>
+  </div>
+
+  <!-- Icon 3: Outline on white -->
+  <div class="logo-card light-bg" style="padding:32px;min-height:140px">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+      <rect width="48" height="48" rx="11" fill="white" stroke="#e5e5e5" stroke-width="1"/>
+      <path d="M30 10 C18 10 10 16 10 24 C10 32 18 38 30 38" stroke="#22c55e" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      <line x1="21" y1="18" x2="32" y2="18" stroke="#22c55e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+      <line x1="18" y1="24" x2="32" y2="24" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="21" y1="30" x2="32" y2="30" stroke="#22c55e" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+    </svg>
+    <div class="logo-card-label" style="color:#999">Icon on white</div>
+  </div>
+
+  <!-- Icon 4: Monochrome white -->
+  <div class="logo-card dark-bg" style="padding:32px;min-height:140px">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+      <path d="M30 10 C18 10 10 16 10 24 C10 32 18 38 30 38" stroke="white" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+      <line x1="21" y1="18" x2="32" y2="18" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+      <line x1="18" y1="24" x2="32" y2="24" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+      <line x1="21" y1="30" x2="32" y2="30" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+    </svg>
+    <div class="logo-card-label">Monochrome</div>
+  </div>
+
+  <!-- Icon 5: Tiny 16px simulation -->
+  <div class="logo-card dark-bg" style="padding:32px;min-height:140px;justify-content:center;gap:16px">
+    <svg width="16" height="16" viewBox="0 0 48 48" fill="none">
+      <path d="M30 10 C18 10 10 16 10 24 C10 32 18 38 30 38" stroke="#4ade80" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <line x1="18" y1="24" x2="32" y2="24" stroke="#4ade80" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+      <path d="M30 10 C18 10 10 16 10 24 C10 32 18 38 30 38" stroke="#4ade80" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      <line x1="21" y1="18" x2="32" y2="18" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" opacity="0.45"/>
+      <line x1="18" y1="24" x2="32" y2="24" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
+      <line x1="21" y1="30" x2="32" y2="30" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" opacity="0.45"/>
+    </svg>
+    <div class="logo-card-label">16px · 32px</div>
+  </div>
+
+</div>
+
+<div class="section-label" style="margin-top:40px">Stacked / Compact Variant</div>
+<div class="logo-grid" style="grid-template-columns:repeat(3,1fr)">
+
+  <div class="logo-card dark-bg">
+    <svg width="120" height="72" viewBox="0 0 120 72" fill="none">
+      <!-- Icon centered -->
+      <g transform="translate(36,0)">
+        <path d="M22 4 C10 4 2 10 2 18 C2 26 10 32 22 32" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="13" y1="11" x2="24" y2="11" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+        <line x1="10" y1="18" x2="24" y2="18" stroke="#4ade80" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="13" y1="25" x2="24" y2="25" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+      </g>
+      <!-- Wordmark below -->
+      <text x="60" y="60" font-family="Syne, sans-serif" font-weight="800" font-size="16" fill="white" letter-spacing="-0.3" text-anchor="middle">callibre<tspan fill="#4ade80">.ai</tspan></text>
+    </svg>
+    <div class="logo-card-label">Stacked dark</div>
+  </div>
+
+  <div class="logo-card light-bg">
+    <svg width="120" height="72" viewBox="0 0 120 72" fill="none">
+      <g transform="translate(36,0)">
+        <path d="M22 4 C10 4 2 10 2 18 C2 26 10 32 22 32" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <line x1="13" y1="11" x2="24" y2="11" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+        <line x1="10" y1="18" x2="24" y2="18" stroke="#22c55e" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="13" y1="25" x2="24" y2="25" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+      </g>
+      <text x="60" y="60" font-family="Syne, sans-serif" font-weight="800" font-size="16" fill="#0a0a0a" letter-spacing="-0.3" text-anchor="middle">callibre<tspan fill="#22c55e">.ai</tspan></text>
+    </svg>
+    <div class="logo-card-label" style="color:#999">Stacked light</div>
+  </div>
+
+  <!-- Icon mark with pill -->
+  <div class="logo-card dark-bg">
+    <svg width="160" height="40" viewBox="0 0 160 40" fill="none">
+      <!-- Pill bg -->
+      <rect x="0" y="0" width="160" height="40" rx="20" fill="#111" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+      <!-- Mini icon -->
+      <g transform="translate(14,4)">
+        <path d="M18 3 C9 3 3 8 3 16 C3 24 9 29 18 29" stroke="#4ade80" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <line x1="11" y1="10" x2="20" y2="10" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+        <line x1="9" y1="16" x2="20" y2="16" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+        <line x1="11" y1="22" x2="20" y2="22" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+      </g>
+      <!-- Text -->
+      <text x="52" y="25" font-family="Syne, sans-serif" font-weight="800" font-size="15" fill="white" letter-spacing="-0.3">callibre<tspan fill="#4ade80">.ai</tspan></text>
+    </svg>
+    <div class="logo-card-label">Pill badge</div>
+  </div>
+
+</div>
+
+<!-- CONCEPT RATIONALE -->
+<div class="divider"></div>
+
+<div class="section-label">Design Rationale</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px">
+  <div style="background:#111;border:1px solid var(--border);padding:32px">
+    <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--g1);margin-bottom:16px">The Mark</div>
+    <p style="font-size:14px;color:#ccc;line-height:1.8;margin-bottom:12px">The <strong style="color:white">C</strong> is formed from a single open arc — deliberately unclosed, like a calibration curve. The three horizontal lines inside reference both <strong style="color:white">audio waveforms</strong> (voice AI) and <strong style="color:white">scoring rubrics</strong> (pass/fail testing). The varying opacity creates visual weight hierarchy: the center line is the signal, the others are the range.</p>
+    <p style="font-size:14px;color:#ccc;line-height:1.8">Concept: a <em style="color:var(--green)">calibration instrument</em> — precision, measurement, truth. Callibre tells you what's actually happening. The mark communicates that.</p>
+  </div>
+  <div style="background:#111;border:1px solid var(--border);padding:32px">
+    <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--g1);margin-bottom:16px">Typography & Color</div>
+    <p style="font-size:14px;color:#ccc;line-height:1.8;margin-bottom:16px"><strong style="color:white">Syne 800</strong> — geometric, technical, confident. Tight letter-spacing gives it a tool/instrument feel rather than a startup feel. The lowercase reinforces approachability without losing authority.</p>
+    <p style="font-size:14px;color:#ccc;line-height:1.8;margin-bottom:16px">The <strong style="color:var(--green)">.ai</strong> suffix breaks from the wordmark in green — it's metadata, not branding. This is intentional: "callibre" is the product, ".ai" is the context.</p>
+
+    <div class="swatches">
+      <div class="swatch">
+        <div class="sw-color" style="background:#4ade80"></div>
+        <div class="sw-label">Signal</div>
+        <div class="sw-hex">#4ade80</div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background:#090909;border:1px solid #222"></div>
+        <div class="sw-label">Base</div>
+        <div class="sw-hex">#090909</div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background:#ffffff"></div>
+        <div class="sw-label">Type</div>
+        <div class="sw-hex">#ffffff</div>
+      </div>
+      <div class="swatch">
+        <div class="sw-color" style="background:#22c55e"></div>
+        <div class="sw-label">Dark mode</div>
+        <div class="sw-hex">#22c55e</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD HINT -->
+<div style="margin-top:32px;padding:20px 24px;background:#0f1a13;border:1px solid rgba(74,222,128,0.15);border-radius:8px;font-size:13px;color:#4ade80;font-family:'Syne',sans-serif;letter-spacing:0.02em">
+  💡 All marks above are inline SVG — copy the SVG code directly, or screenshot any variant for use as a PNG.
+</div>
+
+</body>
+</html>
