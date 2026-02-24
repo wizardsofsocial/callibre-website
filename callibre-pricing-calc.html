@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Callibre AI — Pricing Calculator</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #090909; --black-2: #101010; --black-3: #181818; --black-4: #1f1f1f;
+  --white: #fff; --g1: #999; --g2: #666; --g3: #333;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.13);
+  --green: #4ade80; --green-glow: rgba(74,222,128,0.1);
+  --red: #f87171; --amber: #fbbf24; --blue: #60a5fa;
+  --font: 'Geist', system-ui, sans-serif; --mono: 'Geist Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--black);color:var(--white);font-family:var(--font);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;padding:48px 24px}
+.page{max-width:900px;margin:0 auto}
+.header{margin-bottom:40px}
+.logo{display:flex;align-items:center;gap:8px;margin-bottom:24px}
+.logo-mark{width:28px;height:28px;border-radius:6px;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:800;color:#000}
+.logo-text{font-size:17px;font-weight:700;letter-spacing:-0.04em}
+h1{font-size:28px;font-weight:800;letter-spacing:-0.045em;margin-bottom:8px}
+.subtitle{font-size:15px;color:var(--g1);line-height:1.6}
+.subtitle strong{color:var(--amber)}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+.card{background:var(--black-2);border:1px solid var(--border);border-radius:14px;padding:24px}
+.card.full{grid-column:1/-1}
+.card.highlight{border-color:var(--green);background:var(--black-3)}
+.card-title{font-size:11px;font-family:var(--mono);color:var(--g2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px}
+
+/* INPUTS */
+.field{margin-bottom:16px}
+.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:13px;color:var(--g1);margin-bottom:6px;font-weight:500}
+.field-row{display:flex;align-items:center;gap:8px}
+.prefix{font-family:var(--mono);font-size:13px;color:var(--g2);flex-shrink:0}
+input[type=range]{width:100%;height:4px;background:var(--g3);border-radius:2px;outline:none;-webkit-appearance:none;cursor:pointer;margin-top:8px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--green);cursor:pointer}
+input[type=number], input[type=text]{
+  background:var(--black-3);border:1px solid var(--border2);border-radius:7px;
+  padding:8px 12px;font-size:14px;font-family:var(--mono);color:var(--white);
+  width:100%;outline:none;transition:border-color .15s;
+}
+input[type=number]:focus, input[type=text]:focus{border-color:var(--green)}
+.range-labels{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--g2);margin-top:4px}
+.range-val{font-family:var(--mono);font-size:13px;color:var(--white);font-weight:600;min-width:60px;text-align:right}
+
+/* OUTPUTS */
+.metric{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--black-3);border:1px solid var(--border);border-radius:8px;margin-bottom:8px}
+.metric:last-child{margin-bottom:0}
+.metric-label{font-size:13px;color:var(--g1)}
+.metric-val{font-family:var(--mono);font-size:14px;font-weight:700}
+.metric-val.green{color:var(--green)}
+.metric-val.red{color:var(--red)}
+.metric-val.amber{color:var(--amber)}
+.metric-val.white{color:var(--white)}
+
+/* TIER TABLE */
+.tier-table{width:100%;border-collapse:collapse;margin-top:4px}
+.tier-table th{font-family:var(--mono);font-size:10px;color:var(--g2);text-transform:uppercase;letter-spacing:.08em;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.tier-table td{font-size:13px;padding:10px 12px;border-bottom:1px solid var(--border)}
+.tier-table tr:last-child td{border-bottom:none}
+.tier-table tr:hover td{background:rgba(255,255,255,.02)}
+.t-name{font-weight:600}
+.t-price{font-family:var(--mono);font-weight:700;color:var(--white)}
+.t-credits{font-family:var(--mono);color:var(--g1)}
+.t-cost{font-family:var(--mono)}
+.t-margin{font-family:var(--mono);font-weight:700}
+.t-rev{font-family:var(--mono);color:var(--blue)}
+.good{color:var(--green)}.warn{color:var(--amber)}.bad{color:var(--red)}
+
+.verdict{
+  padding:16px 18px;border-radius:10px;margin-top:16px;
+  border:1px solid transparent;font-size:14px;line-height:1.6;
+}
+.verdict.good{background:rgba(74,222,128,.07);border-color:rgba(74,222,128,.2);color:var(--green)}
+.verdict.warn{background:rgba(251,191,36,.07);border-color:rgba(251,191,36,.2);color:var(--amber)}
+.verdict.bad{background:rgba(248,113,113,.07);border-color:rgba(248,113,113,.2);color:var(--red)}
+
+.divider{height:1px;background:var(--border);margin:20px 0}
+
+.section-head{font-size:11px;font-family:var(--mono);color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;margin-top:20px}
+.section-head:first-child{margin-top:0}
+
+.note{font-size:12px;color:var(--g2);font-family:var(--mono);margin-top:12px;line-height:1.6;padding:10px 14px;background:var(--black-3);border-radius:6px;border:1px solid var(--border)}
+
+@media(max-width:700px){.grid{grid-template-columns:1fr}.card.full{grid-column:auto}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="logo">
+      <div class="logo-mark">C</div>
+      <span class="logo-text">callibre.ai</span>
+    </div>
+    <h1>Pricing & Margin Calculator</h1>
+    <p class="subtitle">Work out your <strong>real cost per action</strong> before setting credit prices. Adjust the inputs — outputs update instantly.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- COST INPUTS -->
+    <div class="card">
+      <div class="card-title">Your Cost Inputs</div>
+
+      <div class="section-head">Voice & Calls</div>
+      <div class="field">
+        <label>Cost per minute (voice call)</label>
+        <div class="field-row">
+          <span class="prefix">$</span>
+          <input type="number" id="costPerMin" value="0.08" step="0.01" min="0">
+        </div>
+      </div>
+      <div class="field">
+        <label>Avg test call duration (minutes)</label>
+        <div class="field-row">
+          <input type="number" id="callDuration" value="3" step="0.5" min="0.5">
+          <span class="prefix">min</span>
+        </div>
+      </div>
+
+      <div class="section-head">AI Analysis per Call</div>
+      <div class="field">
+        <label>AI analysis cost per call (transcription + scoring)</label>
+        <div class="field-row">
+          <span class="prefix">$</span>
+          <input type="number" id="aiPerCall" value="0.04" step="0.01" min="0">
+        </div>
+      </div>
+
+      <div class="section-head">Monitoring (per agent per day)</div>
+      <div class="field">
+        <label>AI cost to analyze daily call logs</label>
+        <div class="field-row">
+          <span class="prefix">$</span>
+          <input type="number" id="monitoringPerDay" value="0.05" step="0.01" min="0">
+        </div>
+      </div>
+
+      <div class="section-head">Audit (VADAF per run)</div>
+      <div class="field">
+        <label>AI cost per deep audit run</label>
+        <div class="field-row">
+          <span class="prefix">$</span>
+          <input type="number" id="auditCost" value="0.25" step="0.05" min="0">
+        </div>
+      </div>
+
+      <div class="section-head">Infrastructure</div>
+      <div class="field">
+        <label>Monthly infra / hosting overhead</label>
+        <div class="field-row">
+          <span class="prefix">$</span>
+          <input type="number" id="infraMonthly" value="50" step="10" min="0">
+        </div>
+      </div>
+      <div class="field">
+        <label>Estimated active paying customers</label>
+        <div class="field-row">
+          <input type="number" id="customers" value="20" step="1" min="1">
+        </div>
+      </div>
+    </div>
+
+    <!-- REAL COSTS -->
+    <div class="card">
+      <div class="card-title">Your Real Cost Per Action</div>
+
+      <div class="section-head">Calculated costs</div>
+      <div class="metric">
+        <span class="metric-label">Cost per test call</span>
+        <span class="metric-val white" id="out-callCost">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Cost per day of monitoring</span>
+        <span class="metric-val white" id="out-monitorCost">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Cost per VADAF audit</span>
+        <span class="metric-val white" id="out-auditCostOut">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Infra cost per customer/mo</span>
+        <span class="metric-val white" id="out-infraPerCustomer">—</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-head">Credit price settings</div>
+      <div class="field">
+        <label>Credits per test call</label>
+        <div class="field-row">
+          <input type="number" id="creditsTestCall" value="5" step="1" min="1">
+          <span class="prefix">cr</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Credits per day monitoring</label>
+        <div class="field-row">
+          <input type="number" id="creditsMonitor" value="2" step="1" min="1">
+          <span class="prefix">cr</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Credits per VADAF audit</label>
+        <div class="field-row">
+          <input type="number" id="creditsAudit" value="10" step="1" min="1">
+          <span class="prefix">cr</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Price per credit top-up</label>
+        <div class="field-row">
+          <span class="prefix">$</span>
+          <input type="number" id="creditPrice" value="0.05" step="0.005" min="0.001">
+          <span class="prefix">/ credit</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-head">Margin per action at current credit price</div>
+      <div class="metric">
+        <span class="metric-label">Margin: test call</span>
+        <span class="metric-val" id="out-marginCall">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Margin: day monitoring</span>
+        <span class="metric-val" id="out-marginMonitor">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Margin: VADAF audit</span>
+        <span class="metric-val" id="out-marginAudit">—</span>
+      </div>
+    </div>
+
+    <!-- TIER ANALYSIS -->
+    <div class="card full">
+      <div class="card-title">Tier Economics</div>
+      <p style="font-size:13px;color:var(--g1);margin-bottom:20px">Set your tier prices and included credits. See if each tier covers your costs at average usage patterns.</p>
+
+      <div class="grid" style="margin-top:0;gap:16px">
+        <div>
+          <div class="section-head">Free Tier</div>
+          <div class="field">
+            <label>Included credits</label>
+            <input type="number" id="freeCredits" value="100" step="10">
+          </div>
+          <div class="field">
+            <label>Price</label>
+            <div class="field-row"><span class="prefix">$</span><input type="number" id="freePrice" value="0" step="1" min="0" readonly style="opacity:.5;cursor:not-allowed"></div>
+          </div>
+        </div>
+        <div>
+          <div class="section-head">Pro Tier</div>
+          <div class="field">
+            <label>Included credits</label>
+            <input type="number" id="proCredits" value="1000" step="50">
+          </div>
+          <div class="field">
+            <label>Price / mo</label>
+            <div class="field-row"><span class="prefix">$</span><input type="number" id="proPrice" value="49" step="1" min="1"></div>
+          </div>
+        </div>
+        <div>
+          <div class="section-head">Agency Tier</div>
+          <div class="field">
+            <label>Included credits</label>
+            <input type="number" id="agencyCredits" value="3000" step="100">
+          </div>
+          <div class="field">
+            <label>Price / mo</label>
+            <div class="field-row"><span class="prefix">$</span><input type="number" id="agencyPrice" value="99" step="1" min="1"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <table class="tier-table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Price/mo</th>
+            <th>Credits incl.</th>
+            <th>Cost of credits</th>
+            <th>Gross margin</th>
+            <th>MRR @ 20 customers</th>
+          </tr>
+        </thead>
+        <tbody id="tier-tbody"></tbody>
+      </table>
+
+      <div id="tier-verdict"></div>
+
+      <div class="note">
+        💡 "Cost of credits" = what it costs you if every included credit is used on test calls (worst case). Real usage is mixed, so actual margins are higher. Infra cost per customer is added to each tier's cost.
+      </div>
+    </div>
+
+    <!-- BREAK-EVEN -->
+    <div class="card full highlight">
+      <div class="card-title">Recommended Credit Price</div>
+      <div id="recommendation" style="font-size:14px;line-height:1.8;color:var(--g1)">—</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const fmt = (n, decimals=2) => '$' + Math.abs(n).toFixed(decimals);
+const pct = n => (n*100).toFixed(1) + '%';
+
+function calc() {
+  // inputs
+  const costPerMin     = +$('costPerMin').value || 0;
+  const callDuration   = +$('callDuration').value || 3;
+  const aiPerCall      = +$('aiPerCall').value || 0;
+  const monitorPerDay  = +$('monitoringPerDay').value || 0;
+  const auditCost      = +$('auditCost').value || 0;
+  const infraMonthly   = +$('infraMonthly').value || 0;
+  const customers      = +$('customers').value || 1;
+
+  const creditsCall    = +$('creditsTestCall').value || 5;
+  const creditsMonitor = +$('creditsMonitor').value || 2;
+  const creditsAudit   = +$('creditsAudit').value || 10;
+  const creditPrice    = +$('creditPrice').value || 0.05;
+
+  // costs
+  const callCost     = (costPerMin * callDuration) + aiPerCall;
+  const monCost      = monitorPerDay;
+  const audCost      = auditCost;
+  const infraPerCust = infraMonthly / customers;
+
+  $('out-callCost').textContent       = fmt(callCost);
+  $('out-monitorCost').textContent    = fmt(monCost);
+  $('out-auditCostOut').textContent   = fmt(audCost);
+  $('out-infraPerCustomer').textContent = fmt(infraPerCust);
+
+  // revenue per action at credit price
+  const revCall    = creditsCall * creditPrice;
+  const revMonitor = creditsMonitor * creditPrice;
+  const revAudit   = creditsAudit * creditPrice;
+
+  const mCall    = revCall - callCost;
+  const mMonitor = revMonitor - monCost;
+  const mAudit   = revAudit - audCost;
+
+  function setMargin(elId, margin, revenue) {
+    const el = $(elId);
+    const pctVal = revenue > 0 ? (margin/revenue)*100 : 0;
+    el.textContent = (margin >= 0 ? '+' : '') + fmt(margin) + ' (' + pctVal.toFixed(0) + '% margin)';
+    el.className = 'metric-val ' + (margin > 0.01 ? 'green' : margin > -0.01 ? 'amber' : 'red');
+  }
+
+  setMargin('out-marginCall', mCall, revCall);
+  setMargin('out-marginMonitor', mMonitor, revMonitor);
+  setMargin('out-marginAudit', mAudit, revAudit);
+
+  // tier analysis
+  const tiers = [
+    { name:'Free',   price: 0,                       credits: +$('freeCredits').value   || 100  },
+    { name:'Pro',    price: +$('proPrice').value    || 49,  credits: +$('proCredits').value   || 1000 },
+    { name:'Agency', price: +$('agencyPrice').value || 99,  credits: +$('agencyCredits').value || 3000 },
+  ];
+
+  const tbody = $('tier-tbody');
+  tbody.innerHTML = '';
+
+  let verdicts = [];
+
+  tiers.forEach(t => {
+    // worst case: all credits used on calls
+    const creditCostWorstCase = (t.credits / creditsCall) * callCost + infraPerCust;
+    const grossMargin = t.price - creditCostWorstCase;
+    const marginPct = t.price > 0 ? (grossMargin / t.price) * 100 : (grossMargin < 0 ? -100 : 0);
+    const mrr = t.price * Math.ceil(customers * (t.name === 'Pro' ? 0.5 : t.name === 'Agency' ? 0.3 : 0.2));
+
+    const marginClass = marginPct > 30 ? 'good' : marginPct > 0 ? 'warn' : 'bad';
+    const marginLabel = marginPct > 30 ? '✓' : marginPct > 0 ? '⚠' : '✗';
+
+    tbody.innerHTML += `
+      <tr>
+        <td class="t-name">${t.name}</td>
+        <td class="t-price">${t.price === 0 ? 'Free' : '$'+t.price}</td>
+        <td class="t-credits">${t.credits.toLocaleString()} cr</td>
+        <td class="t-cost">${fmt(creditCostWorstCase)}</td>
+        <td class="t-margin ${marginClass}">${marginLabel} ${marginPct.toFixed(0)}%</td>
+        <td class="t-rev">$${mrr.toLocaleString()}</td>
+      </tr>`;
+
+    verdicts.push({ name: t.name, marginPct, price: t.price, credits: t.credits, creditCostWorstCase });
+  });
+
+  // recommendation
+  const breakEvenCreditPrice = callCost / creditsCall;
+  const minViablePrice = breakEvenCreditPrice * 1.4; // 40% margin target
+  const recommended = Math.ceil(minViablePrice * 200) / 200; // round to nearest $0.005
+
+  const recEl = $('recommendation');
+  const proTier = verdicts[1];
+  const agencyTier = verdicts[2];
+  const allProfitable = verdicts.filter(v => v.price > 0).every(v => v.marginPct > 20);
+
+  recEl.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px">
+      <div style="background:var(--black);border:1px solid var(--border);border-radius:10px;padding:16px">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--g2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Break-even credit price</div>
+        <div style="font-size:22px;font-weight:800;letter-spacing:-0.04em;color:var(--white)">${fmt(breakEvenCreditPrice, 4)}</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--g2);margin-top:4px">per credit (0% margin)</div>
+      </div>
+      <div style="background:var(--black);border:1px solid rgba(74,222,128,.3);border-radius:10px;padding:16px">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--g2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Recommended (40% margin)</div>
+        <div style="font-size:22px;font-weight:800;letter-spacing:-0.04em;color:var(--green)">${fmt(recommended, 4)}</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--g2);margin-top:4px">per credit top-up</div>
+      </div>
+      <div style="background:var(--black);border:1px solid var(--border);border-radius:10px;padding:16px">
+        <div style="font-family:var(--mono);font-size:10px;color:var(--g2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Current credit price</div>
+        <div style="font-size:22px;font-weight:800;letter-spacing:-0.04em;color:${creditPrice >= recommended ? '#4ade80' : '#f87171'}">${fmt(creditPrice, 4)}</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--g2);margin-top:4px">${creditPrice >= recommended ? '✓ above minimum' : '⚠ below minimum'}</div>
+      </div>
+    </div>
+    <div class="verdict ${allProfitable ? 'good' : 'warn'}">
+      ${allProfitable
+        ? `✓ Your current pricing is sustainable. Pro tier margin is ~${proTier.marginPct.toFixed(0)}%, Agency is ~${agencyTier.marginPct.toFixed(0)}%. Recommended credit top-up price: <strong>${fmt(recommended, 4)}/credit</strong> (or bundle as $${(recommended*100).toFixed(0)} for 100 credits).`
+        : `⚠ At current settings, one or more tiers may not cover your costs at full credit usage. Consider raising credit prices to at least <strong>${fmt(recommended, 4)}/credit</strong>, reducing included credits, or raising tier prices. The break-even credit price for your call costs is ${fmt(breakEvenCreditPrice, 4)}.`
+      }
+    </div>
+  `;
+}
+
+// listen to all inputs
+document.querySelectorAll('input[type=number]').forEach(el => {
+  el.addEventListener('input', calc);
+});
+
+calc();
+</script>
+</body>
+</html>
