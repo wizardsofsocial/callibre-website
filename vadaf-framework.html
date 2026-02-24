@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VADAF Framework — Voice AI QA for HighLevel Agents | Callibre AI</title>
+  <meta name="description" content="Learn the VADAF framework Callibre uses to score Voice and Chat AI agents across Validation, Accuracy, Decisioning, Action, and Flow. Built for HighLevel agencies.">
+  <link rel="canonical" href="https://callibre.ai/vadaf-framework">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#090909">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --black:#090909;--black-2:#101010;--black-3:#181818;--white:#fff;
+      --g1:#999;--g2:#666;--border:rgba(255,255,255,0.08);
+      --green:#4ade80;--green-glow:rgba(74,222,128,0.1);
+      --font:'Geist',system-ui,sans-serif;--mono:'Geist Mono',monospace;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--black);color:var(--white);font-family:var(--font);line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:var(--green);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(9,9,9,0.9);backdrop-filter:blur(16px);z-index:10}
+    .logo{display:flex;align-items:center;gap:8px;font-weight:700;letter-spacing:-0.04em}
+    .logo-mark{width:26px;height:26px;border-radius:7px;background:#090909;border:1px solid var(--green);display:flex;align-items:center;justify-content:center}
+    .logo-mark svg{display:block}
+    .nav-links{display:flex;gap:16px;font-size:13px;color:var(--g1)}
+    .nav-links a{color:var(--g1)}
+    .nav-links a:hover{color:var(--white)}
+    main{max-width:920px;margin:0 auto;padding:40px 20px 80px}
+    .tag{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+    h1{font-size:clamp(32px,4.8vw,44px);font-weight:800;letter-spacing:-0.045em;margin-bottom:12px}
+    .lede{font-size:16px;color:var(--g1);max-width:640px;margin-bottom:24px}
+    .pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1px solid var(--border);background:var(--black-2);padding:6px 14px;font-family:var(--mono);font-size:11px;color:var(--g1);margin-bottom:20px}
+    section{margin-top:40px}
+    h2{font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px}
+    h3{font-size:16px;font-weight:600;letter-spacing:-0.02em;margin-bottom:6px}
+    p{margin-bottom:10px;font-size:14px;color:var(--g1);line-height:1.7}
+    ul{margin:8px 0 12px 18px;font-size:14px;color:var(--g1)}
+    li{margin-bottom:4px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
+    .card{background:var(--black-2);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+    .dim-label{font-family:var(--mono);font-size:11px;color:var(--green);margin-bottom:4px}
+    .table{margin-top:16px;border-radius:10px;border:1px solid var(--border);overflow:hidden;font-size:13px}
+    .table-row{display:grid;grid-template-columns:2fr 1fr;border-top:1px solid var(--border)}
+    .table-row:first-child{border-top:none}
+    .table-cell{padding:10px 12px}
+    .table-head{background:var(--black-2);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--g2)}
+    .dim-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:999px;background:var(--green-glow);color:var(--green)}
+    .footer-note{margin-top:32px;font-size:12px;color:var(--g2)}
+    @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <span class="logo-mark">
+        <svg width="18" height="18" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10 C18 10 10 16 10 24 C10 32 18 38 30 38" stroke="#4ade80" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <line x1="21" y1="18" x2="32" y2="18" stroke="#4ade80" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+          <line x1="18" y1="24" x2="32" y2="24" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="21" y1="30" x2="32" y2="30" stroke="#4ade80" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+        </svg>
+      </span>
+      callibre<span style="color:var(--green)">.ai</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#features">Product</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="tag">Framework</div>
+    <h1>VADAF: a 5-part QA framework for Voice & Chat AI</h1>
+    <p class="lede">
+      VADAF is the evaluation framework Callibre uses to score every interaction your voice and chat agents have with customers.
+      It breaks quality down into five dimensions — <strong>Validation, Accuracy, Decisioning, Action, and Flow</strong> — so you can
+      see exactly why an interaction succeeded or failed.
+    </p>
+    <div class="pill">Built for HighLevel voice AI agents</div>
+
+    <section>
+      <h2>Why VADAF exists</h2>
+      <p>
+        Traditional QA or spot-checking tells you that a call was “good” or “bad”, but not <em>why</em>. VADAF separates failures into
+        clear, actionable buckets so operators, agencies, and product teams know what to fix:
+      </p>
+      <ul>
+        <li><strong>Validation</strong> problems: the agent never confirmed the right inputs.</li>
+        <li><strong>Accuracy</strong> problems: the content was wrong or hallucinated.</li>
+        <li><strong>Decisioning</strong> problems: it chose the wrong path or escalation.</li>
+        <li><strong>Action</strong> problems: it failed to trigger the right downstream actions.</li>
+        <li><strong>Flow</strong> problems: the conversation felt confusing, robotic, or non-compliant.</li>
+      </ul>
+      <p>
+        In Callibre, every test run and production call can be scored against VADAF so your dashboards and reports show exactly
+        where agents are breaking – not just that they are.
+      </p>
+    </section>
+
+    <section>
+      <h2>The 5 VADAF dimensions</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="dim-label">V — Validation</div>
+          <h3>Did the agent validate the right inputs?</h3>
+          <p>
+            Validation checks whether the agent confirmed required information before taking action.
+          </p>
+          <ul>
+            <li>Confirmed caller intent before transferring.</li>
+            <li>Verified location before giving location-specific info.</li>
+            <li>Collected required fields like name, phone, or account ID.</li>
+            <li>Clarified ambiguity before starting critical workflows.</li>
+          </ul>
+          <p><strong>Failure examples:</strong> booking an appointment without confirming date/time, giving pricing without validating the product or location.</p>
+        </div>
+        <div class="card">
+          <div class="dim-label">A — Accuracy</div>
+          <h3>Was the information factually correct?</h3>
+          <p>
+            Accuracy measures whether the agent’s responses match the source of truth — your knowledge base, policies, and systems.
+          </p>
+          <ul>
+            <li>Correct hours, pricing, and services.</li>
+            <li>Correct KB article or troubleshooting steps.</li>
+            <li>No hallucinated policies, numbers, or claims.</li>
+          </ul>
+          <p><strong>Failure examples:</strong> incorrect hours, wrong instructions, or made-up policies and pricing.</p>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="dim-label">D — Decisioning</div>
+          <h3>Did the agent choose the right path?</h3>
+          <p>
+            Decisioning evaluates how well the agent classifies intent and chooses the correct flow given context.
+          </p>
+          <ul>
+            <li>Routing Sales vs Support correctly.</li>
+            <li>Escalating when escalation is required.</li>
+            <li>Choosing between self-service content vs human handoff.</li>
+          </ul>
+          <p><strong>Failure examples:</strong> sending a support caller to Sales, escalating when not needed, or failing to escalate when required.</p>
+        </div>
+        <div class="card">
+          <div class="dim-label">A — Action</div>
+          <h3>Did the agent trigger the right actions?</h3>
+          <p>
+            Action measures whether downstream system actions were fired correctly and at the right time.
+          </p>
+          <ul>
+            <li>Triggering transfers when required.</li>
+            <li>Sending SMS follow-ups or KB links.</li>
+            <li>Booking appointments with the right details.</li>
+            <li>Firing the right internal workflows.</li>
+          </ul>
+          <p><strong>Failure examples:</strong> missing a required transfer, triggering the wrong flow, or firing actions too early, too late, or multiple times.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:20px">
+        <div class="dim-label">F — Flow</div>
+        <h3>Did the conversation feel clear, natural, and compliant?</h3>
+        <p>
+          Flow looks at conversational structure and experience.
+        </p>
+        <ul>
+          <li>Asking one question at a time when required.</li>
+          <li>Following prompt rules and guardrails.</li>
+          <li>Avoiding repetition, looping, or contradictions.</li>
+        </ul>
+        <p><strong>Failure examples:</strong> asking multiple questions at once, robotic or confusing phrasing, repeated questions, or breaking required prompt rules.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>From failures to root causes</h2>
+      <p>
+        VADAF shines when you start mapping real failures to these dimensions. Instead of a vague “bad call” bucket, you see a
+        precise reason for every low score:
+      </p>
+      <div class="table">
+        <div class="table-row table-head">
+          <div class="table-cell">Failure</div>
+          <div class="table-cell">Root cause (VADAF)</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Wrong transfer destination</div>
+          <div class="table-cell"><span class="dim-badge">Decisioning</span></div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">No transfer triggered when required</div>
+          <div class="table-cell"><span class="dim-badge">Action</span></div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Incorrect hours or pricing given</div>
+          <div class="table-cell"><span class="dim-badge">Accuracy</span></div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Didn’t confirm location before giving details</div>
+          <div class="table-cell"><span class="dim-badge">Validation</span></div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">Confusing or repetitive conversation</div>
+          <div class="table-cell"><span class="dim-badge">Flow</span></div>
+        </div>
+      </div>
+      <p class="footer-note">
+        In Callibre, these mappings power dashboards, alerts, and regression tests – so you always know whether to fix prompts,
+        routing logic, downstream actions, or the overall conversation design.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
+

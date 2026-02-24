@@ -35,7 +35,7 @@
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"What is Callibre AI?","acceptedAnswer":{"@type":"Answer","text":"Callibre AI is a voice AI testing and production monitoring platform built for HighLevel agencies. It gives you one centralized dashboard to test, audit, and monitor every voice agent across all sub-accounts."}},
 {"@type":"Question","name":"How does Callibre test voice AI agents?","acceptedAnswer":{"@type":"Answer","text":"Callibre uses deterministic PASS/FAIL scoring with full evidence. You can run 100+ parallel simulated calls with custom personas and scenarios. It supports regression testing, scheduled runs, and CI/CD integration."}},
-{"@type":"Question","name":"What is VADAF?","acceptedAnswer":{"@type":"Answer","text":"VADAF is Callibre's 5-layer prompt audit: structural analysis, risk detection, compliance check, behavioral simulation, and auto-fix suggestions. It surfaces hallucination triggers and compliance gaps before production."}},
+{"@type":"Question","name":"What is VADAF?","acceptedAnswer":{"@type":"Answer","text":"VADAF is Callibre's 5-part framework for evaluating voice and chat agents across Validation, Accuracy, Decisioning, Action, and Flow. It shows whether the agent validated inputs correctly, gave accurate information, chose the right path, triggered the right actions, and kept a clear, compliant conversation."}},
 {"@type":"Question","name":"How much does Callibre cost?","acceptedAnswer":{"@type":"Answer","text":"Free: $0 with 100 credits/month. Pro: $49/month with 1,000 credits and VADAF. Agency: $99/month with 3,000 credits and unlimited sub-accounts. Credits never expire; top up anytime."}},
 {"@type":"Question","name":"Is there a free trial?","acceptedAnswer":{"@type":"Answer","text":"Yes. 14-day free trial, no credit card required. The Free plan also includes 100 credits per month at no cost."}},
 {"@type":"Question","name":"What is voice AI testing?","acceptedAnswer":{"@type":"Answer","text":"Voice AI testing validates AI voice agents before and after deployment. It includes automated test calls with custom scenarios, PASS/FAIL scoring, regression tests, and production monitoring for quality and compliance. Callibre runs 100+ parallel test calls with full audit trails."}}
@@ -1074,14 +1074,14 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
     <div class="vadaf-section">
       <div class="vadaf-copy reveal-l">
         <div class="tag">VADAF — Deep Audit</div>
-        <h2>5-layer prompt analysis your agents can't hide from</h2>
-        <p>Most audits check if your agent works. VADAF checks <em>why</em> it might fail — surfacing hallucination triggers, compliance gaps, and security risks before they hit production. With auto-fix suggestions built in.</p>
+        <h2>VADAF: 5-part framework for scoring every call</h2>
+        <p>VADAF is our structured framework for grading voice and chat agents across <strong>Validation, Accuracy, Decisioning, Action, and Flow</strong>. Instead of a single fuzzy score, it tells you exactly <em>why</em> an interaction failed so you can fix the right thing. <a href="vadaf-framework.html" style="color:var(--green);text-decoration:none">Learn how VADAF works →</a></p>
         <div class="vadaf-layers">
-          <div class="vl"><div class="vl-num">1</div><div class="vl-name">Structural Analysis</div><div class="vl-tag">Prompt architecture</div></div>
-          <div class="vl"><div class="vl-num">2</div><div class="vl-name">Risk Detection</div><div class="vl-tag">Hallucination triggers</div></div>
-          <div class="vl"><div class="vl-num">3</div><div class="vl-name">Compliance Check</div><div class="vl-tag">Regulatory compliance</div></div>
-          <div class="vl"><div class="vl-num">4</div><div class="vl-name">Behavioral Simulation</div><div class="vl-tag">Edge case coverage</div></div>
-          <div class="vl"><div class="vl-num">5</div><div class="vl-name">Auto-Fix Suggestions</div><div class="vl-tag">Actionable remediation</div></div>
+          <div class="vl"><div class="vl-num">V</div><div class="vl-name">Validation</div><div class="vl-tag">Input checks & required fields</div></div>
+          <div class="vl"><div class="vl-num">A</div><div class="vl-name">Accuracy</div><div class="vl-tag">Factual correctness</div></div>
+          <div class="vl"><div class="vl-num">D</div><div class="vl-name">Decisioning</div><div class="vl-tag">Choosing the right path</div></div>
+          <div class="vl"><div class="vl-num">A</div><div class="vl-name">Action</div><div class="vl-tag">Triggering the right systems</div></div>
+          <div class="vl"><div class="vl-num">F</div><div class="vl-name">Flow</div><div class="vl-tag">Conversation quality</div></div>
         </div>
       </div>
       <div class="reveal-r">
@@ -1091,11 +1091,11 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
             <div class="vc-status vc-warn">⚠ 1 issue found</div>
           </div>
           <div class="vc-rows">
-            <div class="vc-row pass"><span class="vc-name">Structural Analysis</span><span class="vc-r">✓ PASS</span></div>
-            <div class="vc-row pass"><span class="vc-name">Hallucination Risk</span><span class="vc-r">✓ PASS · low risk</span></div>
-            <div class="vc-row fail"><span class="vc-name">Compliance</span><span class="vc-r">✗ FAIL · critical</span></div>
-            <div class="vc-row pass"><span class="vc-name">Behavioral Edge Cases</span><span class="vc-r">✓ PASS · 12/12</span></div>
-            <div class="vc-row warn"><span class="vc-name">Escalation Logic</span><span class="vc-r">⚠ REVIEW</span></div>
+            <div class="vc-row pass"><span class="vc-name">Validation</span><span class="vc-r">✓ PASS</span></div>
+            <div class="vc-row pass"><span class="vc-name">Accuracy</span><span class="vc-r">✓ PASS · low risk</span></div>
+            <div class="vc-row fail"><span class="vc-name">Decisioning</span><span class="vc-r">✗ FAIL · critical</span></div>
+            <div class="vc-row pass"><span class="vc-name">Action</span><span class="vc-r">✓ PASS · 12/12</span></div>
+            <div class="vc-row warn"><span class="vc-name">Flow</span><span class="vc-r">⚠ REVIEW</span></div>
           </div>
           <div class="vc-foot">
             <div class="vc-foot-status vc-fail">Not production-ready</div>
@@ -1397,7 +1397,7 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
         <ul>
           <li><a href="#">Documentation</a></li>
           <li><a href="#">API Reference</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="vadaf-framework.html">VADAF Framework</a></li>
           <li><a href="#">Status</a></li>
         </ul>
       </div>
