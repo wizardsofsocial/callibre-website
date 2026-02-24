@@ -3,10 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Callibre AI — Voice AI Testing & Production Monitoring</title>
+<title>Callibre AI — Voice AI Testing & Production Monitoring for HighLevel Agencies</title>
+<meta name="description" content="Callibre AI is a voice AI testing and production monitoring platform for HighLevel agencies. Centralized dashboard for testing, monitoring, and auditing all your AI voice agents — native HighLevel integration. Free trial, no credit card.">
+<meta name="keywords" content="voice AI testing, AI agent monitoring, HighLevel voice AI, voice agent QA, VADAF audit, Callibre, voice AI for agencies, AI call testing">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#090909">
+<link rel="canonical" href="https://callibre.ai/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://callibre.ai/">
+<meta property="og:title" content="Callibre AI — Voice AI Testing & Production Monitoring">
+<meta property="og:description" content="Centralized voice AI testing and monitoring for HighLevel agencies. All your AI agents in one dashboard — tested, monitored, and audited.">
+<meta property="og:image" content="https://callibre.ai/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Callibre AI">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://callibre.ai/">
+<meta name="twitter:title" content="Callibre AI — Voice AI Testing & Production Monitoring">
+<meta name="twitter:description" content="Centralized voice AI testing and monitoring for HighLevel agencies. All your AI agents in one dashboard.">
+<meta name="twitter:image" content="https://callibre.ai/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebSite","@id":"https://callibre.ai/#website","url":"https://callibre.ai","name":"Callibre AI","description":"Voice AI testing and production monitoring for HighLevel agencies.","publisher":{"@id":"https://callibre.ai/#org"},"inLanguage":"en-US"},
+{"@type":"SoftwareApplication","@id":"https://callibre.ai/#software","name":"Callibre AI","url":"https://callibre.ai","description":"Callibre is a voice AI testing and production monitoring platform for HighLevel agencies. Centralized dashboards, deterministic PASS/FAIL testing, VADAF deep audits, and real-time monitoring across all sub-accounts and voice agent platforms.","applicationCategory":"BusinessApplication","operatingSystem":"Web","publisher":{"@id":"https://callibre.ai/#org"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Pro","price":"49","priceCurrency":"USD"},{"@type":"Offer","name":"Agency","price":"99","priceCurrency":"USD"}]},
+{"@type":"Organization","@id":"https://callibre.ai/#org","name":"Callibre AI","url":"https://callibre.ai"},
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://callibre.ai/"}]},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is Callibre AI?","acceptedAnswer":{"@type":"Answer","text":"Callibre AI is a voice AI testing and production monitoring platform built for HighLevel agencies. It gives you one centralized dashboard to test, audit, and monitor every voice agent across all sub-accounts."}},
+{"@type":"Question","name":"How does Callibre test voice AI agents?","acceptedAnswer":{"@type":"Answer","text":"Callibre uses deterministic PASS/FAIL scoring with full evidence. You can run 100+ parallel simulated calls with custom personas and scenarios. It supports regression testing, scheduled runs, and CI/CD integration."}},
+{"@type":"Question","name":"What is VADAF?","acceptedAnswer":{"@type":"Answer","text":"VADAF is Callibre's 5-layer prompt audit: structural analysis, risk detection, compliance check, behavioral simulation, and auto-fix suggestions. It surfaces hallucination triggers and compliance gaps before production."}},
+{"@type":"Question","name":"How much does Callibre cost?","acceptedAnswer":{"@type":"Answer","text":"Free: $0 with 100 credits/month. Pro: $49/month with 1,000 credits and VADAF. Agency: $99/month with 3,000 credits and unlimited sub-accounts. Credits never expire; top up anytime."}},
+{"@type":"Question","name":"Is there a free trial?","acceptedAnswer":{"@type":"Answer","text":"Yes. 14-day free trial, no credit card required. The Free plan also includes 100 credits per month at no cost."}},
+{"@type":"Question","name":"What is voice AI testing?","acceptedAnswer":{"@type":"Answer","text":"Voice AI testing validates AI voice agents before and after deployment. It includes automated test calls with custom scenarios, PASS/FAIL scoring, regression tests, and production monitoring for quality and compliance. Callibre runs 100+ parallel test calls with full audit trails."}}
+]}
+]}
+</script>
 <style>
 
 /* ── TOKENS ── */
@@ -35,7 +70,8 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+section[id]{scroll-margin-top:70px}
 body{
   background:var(--black);color:var(--white);
   font-family:var(--font);font-size:16px;line-height:1.5;
@@ -157,6 +193,8 @@ nav{
   color:var(--g1);max-width:540px;line-height:1.65;font-weight:400;
   animation:fu .5s .14s ease both;
 }
+.hero-aeo{margin-top:18px;font-size:14px;color:var(--g2);max-width:620px;line-height:1.65;font-weight:400;animation:fu .5s .14s ease both}
+.hero-aeo strong{color:var(--g1);font-weight:600}
 .hero-ctas{
   display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
   margin-top:36px;animation:fu .5s .21s ease both;
@@ -526,6 +564,21 @@ nav{
 .cta-btns{display:flex;gap:12px;justify-content:center}
 .cta-fine{margin-top:18px;font-size:11px;color:var(--g2);font-family:var(--mono)}
 
+/* ── FAQ (AEO) ── */
+.faq-sec{padding:80px 0;border-top:1px solid var(--border)}
+.faq-sec .container{max-width:720px}
+.faq-sec .s-title{margin-bottom:8px}
+.faq-sec .s-desc{margin-bottom:36px}
+.faq-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.faq-item{background:var(--black-2);padding:0}
+.faq-q{width:100%;padding:20px 22px;text-align:left;font-size:15px;font-weight:600;color:var(--white);font-family:var(--font);background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:background .15s}
+.faq-q:hover{background:var(--black-3)}
+.faq-q::after{content:'';width:18px;height:18px;flex-shrink:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat center;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(180deg)}
+.faq-a{padding:0 22px 20px;font-size:14px;color:var(--g1);line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-a-inner{border-top:1px solid var(--border);padding-top:16px}
+
 /* ── FOOTER ── */
 footer{border-top:1px solid var(--border);padding:52px 32px 32px}
 .foot-inner{max-width:1080px;margin:0 auto}
@@ -646,8 +699,9 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
+<header>
+<nav aria-label="Main navigation">
+  <a href="https://callibre.ai/" class="nav-logo" aria-label="Callibre AI home">
     <div class="logo-mark">
       <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M30 10 C18 10 10 16 10 24 C10 32 18 38 30 38" stroke="#4ade80" stroke-width="3" stroke-linecap="round" fill="none"/>
@@ -663,16 +717,19 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
     <a href="#how" class="nav-a">How it works</a>
     <a href="#integrations" class="nav-a">Integrations</a>
     <a href="#pricing" class="nav-a">Pricing</a>
+    <a href="#faq" class="nav-a">FAQ</a>
     <a href="#" class="nav-a">Docs</a>
   </div>
   <div class="nav-right">
-    <a href="#" class="btn-ghost-sm">Sign in</a>
+    <a href="https://dashboard.callibre.ai" class="btn-ghost-sm">Sign in</a>
     <a href="#" class="btn-green-sm">Start free →</a>
   </div>
 </nav>
+</header>
 
+<main id="main-content">
 <!-- HERO -->
-<section class="hero">
+<section class="hero" aria-labelledby="hero-heading">
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
 
@@ -686,10 +743,11 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
     Built for HighLevel agencies — now in beta
   </div>
 
-  <h1 class="hero-h1">
+  <h1 class="hero-h1" id="hero-heading">
     All your AI agents.<br>
     <span class="accent">One dashboard.</span>
   </h1>
+  <p class="hero-aeo" id="what-is-callibre"><strong>Callibre</strong> is a voice AI testing and production monitoring platform for HighLevel agencies. It provides a single dashboard to test, monitor, and audit every AI voice agent across all your sub-accounts — with deterministic PASS/FAIL scoring, VADAF deep audits, and real-time alerts.</p>
 
   <p class="hero-sub">
     Stop digging through sub-accounts. Callibre gives HighLevel agency owners a centralized view of every voice agent's performance — tested, monitored, and audited in one place.
@@ -1177,6 +1235,43 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
   </div>
 </section>
 
+<!-- FAQ (AEO) -->
+<section class="section faq-sec" id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="tag">FAQ</div>
+    <h2 class="s-title" id="faq-heading">Frequently asked questions</h2>
+    <p class="s-desc">Quick answers for HighLevel agencies and voice AI teams.</p>
+    <div class="faq-list reveal">
+      <article class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a1" id="faq-q1"><span itemprop="name">What is Callibre AI?</span></button>
+        <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div class="faq-a-inner"><span itemprop="text">Callibre AI is a voice AI testing and production monitoring platform built for HighLevel agencies. It gives you one centralized dashboard to test, audit, and monitor every voice agent across all sub-accounts — no more logging into each account separately.</span></div></div>
+      </article>
+      <article class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a2" id="faq-q2"><span itemprop="name">How does Callibre test voice AI agents?</span></button>
+        <div class="faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div class="faq-a-inner"><span itemprop="text">Callibre uses deterministic PASS/FAIL scoring with full evidence. You can run 100+ parallel simulated calls with custom personas and scenarios. It supports regression testing, scheduled runs, and CI/CD integration.</span></div></div>
+      </article>
+      <article class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a3" id="faq-q3"><span itemprop="name">What is VADAF?</span></button>
+        <div class="faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div class="faq-a-inner"><span itemprop="text">VADAF is Callibre's 5-layer prompt audit: structural analysis, risk detection, compliance check, behavioral simulation, and auto-fix suggestions. It surfaces hallucination triggers and compliance gaps before production.</span></div></div>
+      </article>
+      <article class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a4" id="faq-q4"><span itemprop="name">How much does Callibre cost?</span></button>
+        <div class="faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div class="faq-a-inner"><span itemprop="text">Free: $0 with 100 credits/month. Pro: $49/month with 1,000 credits and VADAF. Agency: $99/month with 3,000 credits and unlimited sub-accounts. Credits never expire; top up anytime.</span></div></div>
+      </article>
+      <article class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a5" id="faq-q5"><span itemprop="name">Is there a free trial?</span></button>
+        <div class="faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div class="faq-a-inner"><span itemprop="text">Yes. 14-day free trial, no credit card required. The Free plan also includes 100 credits per month at no cost.</span></div></div>
+      </article>
+      <article class="faq-item" itemscope itemtype="https://schema.org/Question">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a6" id="faq-q6"><span itemprop="name">What is voice AI testing?</span></button>
+        <div class="faq-a" id="faq-a6" role="region" aria-labelledby="faq-q6" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer"><div class="faq-a-inner"><span itemprop="text">Voice AI testing validates AI voice agents before and after deployment. It includes automated test calls with custom scenarios, PASS/FAIL scoring, regression tests, and production monitoring for quality and compliance. Callibre runs 100+ parallel test calls with full audit trails.</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="foot-inner">
@@ -1198,10 +1293,11 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
       <div class="foot-col">
         <h4>Product</h4>
         <ul>
-          <li><a href="#">Features</a></li>
-          <li><a href="#">How it Works</a></li>
-          <li><a href="#">Integrations</a></li>
-          <li><a href="#">Pricing</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it Works</a></li>
+          <li><a href="#integrations">Integrations</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#">Changelog</a></li>
         </ul>
       </div>
@@ -1256,6 +1352,20 @@ window.addEventListener('scroll', () => {
   nav.style.borderBottomColor = window.scrollY > 10
     ? 'rgba(255,255,255,0.11)'
     : 'rgba(255,255,255,0.07)';
+});
+
+// FAQ accordion (AEO)
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(b => b.setAttribute('aria-expanded', 'false'));
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
 });
 </script>
 
