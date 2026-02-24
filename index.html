@@ -396,6 +396,46 @@ nav{
   padding:2px 8px;border-radius:4px;text-transform:uppercase;
 }
 
+/* ── UI SHOWCASE ── */
+.ui-showcase{
+  margin-top:56px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+.ui-card{
+  background:var(--black-2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px 20px 18px;
+}
+.ui-label{
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--g2);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  margin-bottom:10px;
+}
+.ui-title{
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:-0.02em;
+  margin-bottom:6px;
+}
+.ui-copy{
+  font-size:13px;
+  color:var(--g1);
+  line-height:1.7;
+  margin-bottom:14px;
+}
+.ui-img{
+  width:100%;
+  border-radius:10px;
+  border:1px solid var(--border);
+  display:block;
+}
+
 /* ── VADAF HIGHLIGHT ── */
 .vadaf-section{
   display:grid;grid-template-columns:1fr 1fr;gap:72px;
@@ -737,6 +777,7 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
   .pillars{grid-template-columns:1fr}
   .tab-pane.active{grid-template-columns:1fr}
   .tab-nav{overflow-x:auto;width:100%}
+  .ui-showcase{grid-template-columns:1fr}
   .int-grid{grid-template-columns:repeat(2,1fr)}
   footer{padding:40px 20px 28px}
   .foot-top{grid-template-columns:1fr;gap:28px}
@@ -1063,6 +1104,22 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
         <div class="feat-card"><div class="feat-icon">📊</div><h3>Custom Report Templates</h3><p>Dynamic, configurable reports for every stakeholder. White-labeled client portal for agencies managing voice AI for customers.</p><div class="feat-chip">White-label</div></div>
         <div class="feat-card"><div class="feat-icon">👥</div><h3>Multi-org & RBAC</h3><p>Organization switching, role-based access for admins, team members, and clients. Credit-based billing with usage tracking.</p><div class="feat-chip">Enterprise-ready</div></div>
         <div class="feat-card"><div class="feat-icon">🔁</div><h3>HighLevel CRM Sync</h3><p>Native HighLevel integration — sync agents, call data, and reporting directly into your CRM workflows.</p><div class="feat-chip">Native sync</div></div>
+      </div>
+    </div>
+
+    <!-- PRODUCT UI SHOWCASE -->
+    <div class="ui-showcase reveal">
+      <div class="ui-card">
+        <div class="ui-label">Testing & QA · Select test mode</div>
+        <h3 class="ui-title">Simulation vs live runs</h3>
+        <p class="ui-copy">Choose between AI-powered simulations and real live calls before every run. Safely test new prompts in simulation, then graduate to production when you’re ready.</p>
+        <img src="assets/test-mode.png" alt="Callibre test mode selection dialog showing Simulation and Live options" class="ui-img">
+      </div>
+      <div class="ui-card">
+        <div class="ui-label">Production Monitoring · Call logs</div>
+        <h3 class="ui-title">Every call, one dashboard</h3>
+        <p class="ui-copy">Centralized call logs across all locations and agents. Filter by sentiment, direction, or endpoint to spot issues before your clients do.</p>
+        <img src="assets/call-logs.png" alt="Callibre production monitoring dashboard with call logs and sentiment metrics" class="ui-img">
       </div>
     </div>
   </div>

@@ -21,9 +21,53 @@ body {
   color: var(--white);
   font-family: var(--font);
   min-height: 100vh;
-  padding: 48px 32px;
+  padding-top: 88px;
+  padding-inline: 32px;
+  padding-bottom: 48px;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Shared nav styles */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:58px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;
+  background:rgba(9,9,9,0.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;color:var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size:17px;font-weight:700;
+  letter-spacing:-0.03em;line-height:1;
+}
+.nav-logo .logo-ai{color:var(--green)}
+.logo-mark{
+  width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-a{
+  padding:5px 13px;border-radius:6px;font-size:13px;font-weight:450;
+  color:var(--g1);text-decoration:none;transition:all 0.15s;
+}
+.nav-a:hover{color:var(--white);background:rgba(255,255,255,0.05)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.btn-ghost-sm{
+  font-size:13px;font-weight:500;color:var(--g1);
+  padding:6px 14px;border:1px solid rgba(255,255,255,0.13);border-radius:7px;
+  background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;
+  text-decoration:none;transition:all 0.15s;display:inline-flex;align-items:center;
+}
+.btn-ghost-sm:hover{color:var(--white);border-color:rgba(255,255,255,0.25)}
+.btn-green-sm{
+  font-size:13px;font-weight:600;color:#000;
+  padding:6px 16px;border:none;border-radius:7px;
+  background:var(--green);cursor:pointer;font-family:'DM Sans',sans-serif;
+  text-decoration:none;transition:all 0.15s;display:inline-flex;align-items:center;gap:5px;
+}
+.btn-green-sm:hover{background:#6ee79a;transform:translateY(-1px);box-shadow:0 4px 16px rgba(74,222,128,0.3)}
+
 h1 {
   font-family: 'Syne', sans-serif;
   font-size: 13px;
@@ -148,6 +192,34 @@ h1 {
 </style>
 </head>
 <body>
+<!-- NAV -->
+<header>
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="Callibre AI home">
+      <div class="logo-mark">
+        <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10 C18 10 10 16 10 24 C10 32 18 38 30 38" stroke="#4ade80" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <line x1="21" y1="18" x2="32" y2="18" stroke="#4ade80" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+          <line x1="18" y1="24" x2="32" y2="24" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="21" y1="30" x2="32" y2="30" stroke="#4ade80" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+        </svg>
+      </div>
+      callibre<span class="logo-ai">.ai</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#features" class="nav-a">Features</a>
+      <a href="index.html#how" class="nav-a">How it works</a>
+      <a href="index.html#integrations" class="nav-a">Integrations</a>
+      <a href="index.html#pricing" class="nav-a">Pricing</a>
+      <a href="index.html#faq" class="nav-a">FAQ</a>
+      <a href="#" class="nav-a">Docs</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://dashboard.callibre.ai" class="btn-ghost-sm">Sign in</a>
+      <a href="#" class="btn-green-sm">Start free →</a>
+    </div>
+  </nav>
+</header>
 
 <h1>Callibre AI — Logo System</h1>
 
