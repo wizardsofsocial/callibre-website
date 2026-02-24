@@ -436,6 +436,29 @@ nav{
   display:block;
 }
 
+/* Lightbox for UI screenshots */
+.ui-lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:300;
+  padding:24px;
+}
+.ui-lightbox.open{display:flex}
+.ui-lightbox-inner{
+  max-width:1100px;
+  width:100%;
+}
+.ui-lightbox-img{
+  width:100%;
+  border-radius:14px;
+  border:1px solid var(--border);
+  box-shadow:0 30px 80px rgba(0,0,0,0.8);
+}
+
 /* ── VADAF HIGHLIGHT ── */
 .vadaf-section{
   display:grid;grid-template-columns:1fr 1fr;gap:72px;
@@ -1476,6 +1499,12 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
   </div>
 </footer>
 
+<div class="ui-lightbox" id="ui-lightbox" aria-hidden="true">
+  <div class="ui-lightbox-inner">
+    <img src="" alt="" class="ui-lightbox-img" id="ui-lightbox-img">
+  </div>
+</div>
+
 <script>
 // Scroll reveal
 const observer = new IntersectionObserver(entries => {
@@ -1514,6 +1543,29 @@ document.querySelectorAll('.faq-q').forEach(btn => {
       btn.setAttribute('aria-expanded', 'true');
     }
   });
+});
+
+// UI screenshot lightbox
+const uiLightbox = document.getElementById('ui-lightbox');
+const uiLightboxImg = document.getElementById('ui-lightbox-img');
+document.querySelectorAll('.ui-img').forEach(img => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', () => {
+    uiLightboxImg.src = img.src;
+    uiLightboxImg.alt = img.alt || '';
+    uiLightbox.classList.add('open');
+    uiLightbox.setAttribute('aria-hidden', 'false');
+  });
+});
+uiLightbox.addEventListener('click', () => {
+  uiLightbox.classList.remove('open');
+  uiLightbox.setAttribute('aria-hidden', 'true');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    uiLightbox.classList.remove('open');
+    uiLightbox.setAttribute('aria-hidden', 'true');
+  }
 });
 </script>
 
