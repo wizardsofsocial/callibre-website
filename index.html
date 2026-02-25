@@ -169,6 +169,33 @@ nav{
   background-size:64px 64px;
   mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%);
   pointer-events:none;
+  animation:gridDrift 20s linear infinite;
+}
+@keyframes gridDrift{
+  0%{background-position:0 0,0 0}
+  100%{background-position:64px 64px,64px 64px}
+}
+@keyframes glowMove1{
+  0%{top:5%;left:25%}25%{top:15%;left:55%}
+  50%{top:8%;left:65%}75%{top:18%;left:35%}100%{top:5%;left:25%}
+}
+@keyframes glowMove2{
+  0%{top:20%;left:60%}25%{top:10%;left:30%}
+  50%{top:25%;left:40%}75%{top:8%;left:55%}100%{top:20%;left:60%}
+}
+.hero-glow-orb{
+  position:absolute;border-radius:50%;pointer-events:none;z-index:1;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(74,222,128,0.08) 0%,transparent 70%);
+  filter:blur(60px);
+  animation:glowMove1 18s ease-in-out infinite;
+}
+.hero-glow-orb-2{
+  position:absolute;border-radius:50%;pointer-events:none;z-index:1;
+  width:350px;height:350px;
+  background:radial-gradient(circle,rgba(74,222,128,0.05) 0%,transparent 70%);
+  filter:blur(80px);
+  animation:glowMove2 22s ease-in-out infinite;
 }
 .hero-pill{
   display:inline-flex;align-items:center;gap:8px;
@@ -781,6 +808,8 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
 <section class="hero" aria-labelledby="hero-heading">
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
+  <div class="hero-glow-orb"></div>
+  <div class="hero-glow-orb-2"></div>
 
   <div class="hero-pill">
     <svg width="16" height="16" viewBox="0 0 48 48" fill="none" style="flex-shrink:0">
