@@ -193,8 +193,7 @@ nav{
   color:var(--g1);max-width:540px;line-height:1.65;font-weight:400;
   animation:fu .5s .14s ease both;
 }
-.hero-aeo{margin-top:18px;font-size:14px;color:var(--g2);max-width:620px;line-height:1.65;font-weight:400;animation:fu .5s .14s ease both}
-.hero-aeo strong{color:var(--g1);font-weight:600}
+
 .hero-ctas{
   display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
   margin-top:36px;animation:fu .5s .21s ease both;
@@ -396,75 +395,12 @@ nav{
   padding:2px 8px;border-radius:4px;text-transform:uppercase;
 }
 
-/* ── UI SHOWCASE ── */
-.ui-showcase{
-  margin-top:56px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-.ui-card{
-  background:var(--black-2);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:20px 20px 18px;
-}
-.ui-label{
-  font-family:var(--mono);
-  font-size:10px;
-  color:var(--g2);
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  margin-bottom:10px;
-}
-.ui-title{
-  font-size:16px;
-  font-weight:600;
-  letter-spacing:-0.02em;
-  margin-bottom:6px;
-}
-.ui-copy{
-  font-size:13px;
-  color:var(--g1);
-  line-height:1.7;
-  margin-bottom:14px;
-}
-.ui-img{
-  width:100%;
-  border-radius:10px;
-  border:1px solid var(--border);
-  display:block;
-}
-
-/* Lightbox for UI screenshots */
-.ui-lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:300;
-  padding:24px;
-}
-.ui-lightbox.open{display:flex}
-.ui-lightbox-inner{
-  max-width:1100px;
-  width:100%;
-}
-.ui-lightbox-img{
-  width:100%;
-  border-radius:14px;
-  border:1px solid var(--border);
-  box-shadow:0 30px 80px rgba(0,0,0,0.8);
-}
-
 /* ── VADAF HIGHLIGHT ── */
 .vadaf-section{
   display:grid;grid-template-columns:1fr 1fr;gap:72px;
   align-items:center;margin-top:56px;
 }
-.vadaf-copy{}
+.vadaf-copy{ display:block; }
 .vadaf-copy h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-0.04em;line-height:1.1;margin-bottom:16px}
 .vadaf-copy p{font-size:16px;color:var(--g1);line-height:1.7;font-weight:400}
 .vadaf-layers{display:flex;flex-direction:column;gap:6px;margin-top:28px}
@@ -800,7 +736,7 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
   .pillars{grid-template-columns:1fr}
   .tab-pane.active{grid-template-columns:1fr}
   .tab-nav{overflow-x:auto;width:100%}
-  .ui-showcase{grid-template-columns:1fr}
+
   .int-grid{grid-template-columns:repeat(2,1fr)}
   footer{padding:40px 20px 28px}
   .foot-top{grid-template-columns:1fr;gap:28px}
@@ -860,10 +796,8 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
     All your Voice AI agents.<br>
     <span class="accent">One dashboard.</span>
   </h1>
-  <p class="hero-aeo" id="what-is-callibre"><strong>Callibre</strong> is a voice AI testing and production monitoring platform for HighLevel agencies. It provides a single dashboard to test, monitor, and audit every AI voice agent across all your sub-accounts — with deterministic PASS/FAIL scoring, VADAF deep audits, and real-time alerts.</p>
-
   <p class="hero-sub">
-    Stop digging through sub-accounts. Callibre gives HighLevel agency owners a centralized view of every voice agent's performance — tested, monitored, and audited in one place.
+    Test, monitor, and audit every voice agent across all your sub-accounts — without logging into a single one.
   </p>
 
   <div class="hero-ctas">
@@ -1130,20 +1064,6 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
       </div>
     </div>
 
-    <!-- PRODUCT UI SHOWCASE -->
-    <div class="ui-showcase reveal">
-      <div class="ui-card">
-        <div class="ui-label">Production Monitoring · Call logs</div>
-        <h3 class="ui-title">Every call, one dashboard</h3>
-        <p class="ui-copy">Centralized call logs across all locations and agents. Filter by sentiment, direction, or endpoint to spot issues before your clients do.</p>
-        <img src="assets/test-mode.png" alt="Callibre production monitoring dashboard with call logs and sentiment metrics" class="ui-img">
-      </div>
-      <div class="ui-card">
-        <div class="ui-label">Testing & QA · Select test mode</div>
-        <h3 class="ui-title">Simulation vs live runs</h3>
-        <p class="ui-copy">Choose between AI-powered simulations and real live calls before every run. Safely test new prompts in simulation, then graduate to production when you’re ready.</p>
-        <img src="assets/call-logs.png" alt="Callibre test mode selection dialog showing Simulation and Live options" class="ui-img">
-      </div>
     </div>
   </div>
 </section>
@@ -1499,11 +1419,6 @@ footer{border-top:1px solid var(--border);padding:52px 32px 32px}
   </div>
 </footer>
 
-<div class="ui-lightbox" id="ui-lightbox" aria-hidden="true">
-  <div class="ui-lightbox-inner">
-    <img src="" alt="" class="ui-lightbox-img" id="ui-lightbox-img">
-  </div>
-</div>
 
 <script>
 // Scroll reveal
@@ -1542,19 +1457,6 @@ document.querySelectorAll('.faq-q').forEach(btn => {
       item.classList.add('open');
       btn.setAttribute('aria-expanded', 'true');
     }
-  });
-});
-
-// UI screenshot lightbox
-const uiLightbox = document.getElementById('ui-lightbox');
-const uiLightboxImg = document.getElementById('ui-lightbox-img');
-document.querySelectorAll('.ui-img').forEach(img => {
-  img.style.cursor = 'zoom-in';
-  img.addEventListener('click', () => {
-    uiLightboxImg.src = img.src;
-    uiLightboxImg.alt = img.alt || '';
-    uiLightbox.classList.add('open');
-    uiLightbox.setAttribute('aria-hidden', 'false');
   });
 });
 uiLightbox.addEventListener('click', () => {
